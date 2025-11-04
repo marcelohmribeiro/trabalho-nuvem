@@ -1,0 +1,66 @@
+/* Variáveis Globais - Cores, Fontes e Espaçamentos */
+:root {
+  /* Cores Principais - Tema Café */
+  --primary-color: #6f4e37;
+  --primary-dark: #5a3e2b;
+  --primary-light: #8b6349;
+  --secondary-color: #a67b5b;
+  --accent-color: #d7b899;
+
+  /* Cores de Texto */
+  --text-primary: #2c1b13;
+  --text-secondary: #5a4a3f;
+  --text-light: #fff8e7;
+
+  /* Cores de Fundo */
+  --bg-white: #ffffff;
+  --bg-light: #f3e5ab;
+  --bg-secondary: #d7b899;
+  --bg-panel: #a67b5b;
+
+  /* Cores de Borda */
+  --border-color: #c89f65;
+  --border-light: #d7b899;
+
+  /* Tamanhos de Fonte */
+  --font-small: 0.875rem; /* 14px */
+  --font-normal: 1rem; /* 16px */
+  --font-medium: 1.125rem; /* 18px */
+  --font-large: 1.5rem; /* 24px */
+  --font-xlarge: 2rem; /* 32px */
+  --font-xxlarge: 2.5rem; /* 40px */
+
+  /* Espaçamentos */
+  --spacing-xs: 0.5rem; /* 8px */
+  --spacing-sm: 1rem; /* 16px */
+  --spacing-md: 1.5rem; /* 24px */
+  --spacing-lg: 2rem; /* 32px */
+  --spacing-xl: 3rem; /* 48px */
+
+  /* Raios de Borda */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 50%;
+
+  /* Cores Especiais */
+  --coin-color: #ffd54f;
+  --detail-gold: #c89f65;
+  --success-color: #4caf50;
+  --error-color: #e57373;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(44, 27, 19, 0.1);
+  --shadow-md: 0 4px 6px rgba(44, 27, 19, 0.15);
+  --shadow-lg: 0 10px 20px rgba(44, 27, 19, 0.2);
+
+  /* Transições */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+
+  /* Larguras */
+  --max-width-container: 1200px;
+  --max-width-content: 600px;
+  --input-height: 56px;
+  --button-height: 48px;
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Café Clicker - Início</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/variables.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/theme-enhancements.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content-wrapper">
+        <!-- Header -->
+        <div class="header">
+          <div class="header-title">
+            <div class="header-icon">☕</div>
+            <span>Café Clicker</span>
+          </div>
+          <a href="settings.html" class="settings-icon">⚙️</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="home-content">
+          <!-- Stats -->
+          <div class="stats-container">
+            <div class="stat-item">
+              <div class="stat-icon">☕</div>
+              <div class="stat-label">Cafés servidos</div>
+              <div class="stat-value">12,345</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">💰</div>
+              <div class="stat-label">Moedas</div>
+              <div class="stat-value">5,678</div>
+            </div>
+          </div>
+
+          <!-- Clicker Area -->
+          <div class="clicker-area">
+            <button
+              class="coffee-button"
+              id="coffeeButton"
+              onclick="clickCoffee(event)"
+            >
+              <div class="coffee-icon-large">☕</div>
+            </button>
+            <div class="particles-container" id="particlesContainer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <div class="bottom-nav-content">
+        <a href="home.html" class="nav-item active">
+          <div class="nav-icon">🏠</div>
+          <div class="nav-label">Início</div>
+        </a>
+        <a href="shop.html" class="nav-item">
+          <div class="nav-icon">🏪</div>
+          <div class="nav-label">Loja</div>
+        </a>
+        <a href="profile.html" class="nav-item">
+          <div class="nav-icon">👤</div>
+          <div class="nav-label">Perfil</div>
+        </a>
+        <a href="ranking.html" class="nav-item">
+          <div class="nav-icon">🏆</div>
+          <div class="nav-label">Ranking</div>
+        </a>
+      </div>
+    </nav>
+
+    <script>
+      function clickCoffee(event) {
+        const button = document.querySelector(".coffee-button");
+        const container = document.getElementById("particlesContainer");
+
+        // Animação de clique no botão
+        button.style.transform = "scale(0.95)";
+        setTimeout(() => {
+          button.style.transform = "scale(1)";
+        }, 100);
+
+        // Criar partículas de café
+        createCoffeeParticles(event, container);
+
+        // Aqui você adicionaria a lógica do jogo
+        console.log("Café clicado! ☕");
+      }
+
+      function createCoffeeParticles(event, container) {
+        const particleCount = 8; // Número de partículas
+        const emojis = ["☕", "💨", "✨", "🌟"]; // Emojis variados
+
+        // Pegar posição do clique relativa ao botão
+        const button = event.currentTarget;
+        const rect = button.getBoundingClientRect();
+        const clickX = event.clientX - rect.left;
+        const clickY = event.clientY - rect.top;
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement("div");
+          particle.className = "coffee-particle";
+
+          // Escolher emoji aleatório
+          const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+          particle.textContent = emoji;
+
+          // Posicionar no local do clique
+          particle.style.left = clickX + "px";
+          particle.style.top = clickY + "px";
+
+          // Ângulo aleatório de dispersão (360 graus)
+          const angle = (Math.PI * 2 * i) / particleCount;
+          const velocity = 80 + Math.random() * 40; // Velocidade aleatória
+
+          const deltaX = Math.cos(angle) * velocity;
+          const deltaY = Math.sin(angle) * velocity - 50; // Menos gravidade para subir mais
+
+          particle.style.setProperty("--deltaX", deltaX + "px");
+          particle.style.setProperty("--deltaY", deltaY + "px");
+
+          // Rotação aleatória
+          const rotation = Math.random() * 720 - 360;
+          particle.style.setProperty("--rotation", rotation + "deg");
+
+          container.appendChild(particle);
+
+          // Remover partícula após animação
+          setTimeout(() => {
+            particle.remove();
+          }, 1000);
+        }
+
+        // Criar partícula de +1 (pontuação)
+        createScorePopup(clickX, clickY, container);
+      }
+
+      function createScorePopup(x, y, container) {
+        const scorePopup = document.createElement("div");
+        scorePopup.className = "score-popup";
+        scorePopup.textContent = "+1";
+        scorePopup.style.left = x + "px";
+        scorePopup.style.top = y + "px";
+
+        container.appendChild(scorePopup);
+
+        setTimeout(() => {
+          scorePopup.remove();
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>

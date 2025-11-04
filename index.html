@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Café Clicker - Login</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/theme-enhancements.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content-wrapper">
+        <!-- Login Content -->
+        <div class="login-content">
+          <!-- Logo -->
+          <div class="logo-container">
+            <div class="logo-icon">☕</div>
+          </div>
+
+          <!-- Título -->
+          <h1 class="login-title">Bem vindo!</h1>
+
+          <!-- Formulário -->
+          <form class="login-form">
+            <div class="input-group">
+              <div class="input-field">
+                <span class="input-icon">✉️</span>
+                <input type="email" placeholder="Email" required />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <div class="input-field">
+                <span class="input-icon">🔒</span>
+                <input type="password" placeholder="Senha" required />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              onclick="event.preventDefault(); window.location.href='pages/home.html'"
+            >
+              Entrar
+            </button>
+          </form>
+
+          <!-- Divider -->
+          <div class="divider">
+            <span class="divider-text">ou</span>
+          </div>
+
+          <!-- Criar Conta -->
+          <a href="pages/register.html" class="create-account-link">
+            <button class="btn btn-create-account">
+              <span class="btn-icon">✨</span>
+              Criar uma Conta
+              <span class="btn-icon">✨</span>
+            </button>
+          </a>
+
+          <!-- Esqueceu a senha -->
+          <a href="#" class="forgot-password">Esqueceu a senha?</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

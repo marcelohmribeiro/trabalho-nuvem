@@ -1,0 +1,118 @@
+/* Estilos específicos da tela Configurações */
+
+.settings-content {
+  padding: var(--spacing-md);
+  min-height: calc(100vh - 64px);
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+}
+
+.settings-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+  font-size: var(--font-medium);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+
+.setting-item {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.setting-item:hover {
+  border-color: var(--detail-gold);
+  box-shadow: var(--shadow-md);
+  background-color: var(--accent-color);
+}
+
+.setting-icon {
+  font-size: 32px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.setting-info {
+  flex: 1;
+}
+
+.setting-name {
+  font-size: var(--font-medium);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.setting-description {
+  font-size: var(--font-small);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Responsividade Desktop */
+@media (min-width: 769px) {
+  .settings-content {
+    max-width: 700px;
+    padding: var(--spacing-xl);
+  }
+
+  .section-title {
+    font-size: var(--font-large);
+  }
+
+  .setting-item {
+    padding: var(--spacing-lg);
+  }
+
+  .setting-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 36px;
+  }
+
+  .setting-name {
+    font-size: var(--font-large);
+  }
+
+  .setting-description {
+    font-size: var(--font-normal);
+  }
+}
+
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+  .settings-content {
+    padding: var(--spacing-sm);
+    padding-bottom: 100px;
+  }
+
+  .section-title {
+    font-size: var(--font-medium);
+  }
+
+  .setting-item {
+    padding: var(--spacing-sm);
+  }
+
+  .setting-icon {
+    font-size: 28px;
+  }
+
+  .setting-name {
+    font-size: var(--font-normal);
+  }
+
+  .setting-description {
+    font-size: 12px;
+  }
+}
