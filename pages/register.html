@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="../css/components.css" />
     <link rel="stylesheet" href="../css/register.css" />
     <link rel="stylesheet" href="../css/theme-enhancements.css" />
+    <!-- Back4App SDK -->
+    <script src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
   </head>
   <body>
     <div class="container">
@@ -20,13 +24,14 @@
           <p class="register-subtitle">Crie sua conta!</p>
 
           <!-- Formulário -->
-          <form class="register-form">
+          <form class="register-form" id="registerForm">
             <div class="input-group">
               <label class="input-label">Nickname</label>
               <div class="input-field">
                 <span class="input-icon">👤</span>
                 <input
                   type="text"
+                  id="registerUsername"
                   placeholder="Digite o seu apelido"
                   required
                 />
@@ -37,7 +42,12 @@
               <label class="input-label">Email</label>
               <div class="input-field">
                 <span class="input-icon">✉️</span>
-                <input type="email" placeholder="seu@email.com" required />
+                <input
+                  type="email"
+                  id="registerEmail"
+                  placeholder="seu@email.com"
+                  required
+                />
               </div>
             </div>
 
@@ -45,7 +55,12 @@
               <label class="input-label">Senha</label>
               <div class="input-field">
                 <span class="input-icon">🔒</span>
-                <input type="password" placeholder="Crie uma senha" required />
+                <input
+                  type="password"
+                  id="registerPassword"
+                  placeholder="Crie uma senha"
+                  required
+                />
               </div>
             </div>
 
@@ -53,18 +68,28 @@
               <label class="input-label">Confirmar Senha</label>
               <div class="input-field">
                 <span class="input-icon">🔒</span>
-                <input type="password" placeholder="Crie uma senha" required />
+                <input
+                  type="password"
+                  id="registerConfirmPassword"
+                  placeholder="Confirme a senha"
+                  required
+                />
               </div>
             </div>
 
-            <button
-              type="submit"
-              class="btn btn-primary"
-              onclick="event.preventDefault(); window.location.href='home.html'"
-            >
+            <button type="submit" class="btn btn-primary">
               <span>☕</span>
               Registrar
             </button>
+            <div
+              id="registerError"
+              style="
+                color: #e57373;
+                margin-top: 10px;
+                display: none;
+                text-align: center;
+              "
+            ></div>
           </form>
 
           <!-- Voltar ao Login -->
@@ -74,5 +99,45 @@
         </div>
       </div>
     </div>
+
+    <script>
+      // Register Form Handler
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const username = document.getElementById("registerUsername").value;
+          const email = document.getElementById("registerEmail").value;
+          const password = document.getElementById("registerPassword").value;
+          const confirmPassword = document.getElementById(
+            "registerConfirmPassword"
+          ).value;
+          const errorDiv = document.getElementById("registerError");
+
+          // Validar senhas
+          if (password !== confirmPassword) {
+            errorDiv.textContent = "As senhas não coincidem!";
+            errorDiv.style.display = "block";
+            return;
+          }
+
+          if (password.length < 6) {
+            errorDiv.textContent = "A senha deve ter pelo menos 6 caracteres!";
+            errorDiv.style.display = "block";
+            return;
+          }
+
+          const result = await register(username, email, password);
+
+          if (result.success) {
+            alert("Conta criada com sucesso! Você será redirecionado.");
+            window.location.href = "home.html";
+          } else {
+            errorDiv.textContent = result.error;
+            errorDiv.style.display = "block";
+          }
+        });
+    </script>
   </body>
 </html>
